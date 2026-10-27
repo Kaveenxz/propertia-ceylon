@@ -1,0 +1,3674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propertia Ceylon — Land & Property Opportunities</title>
+    <meta name="description" content="Explore land, plots, and property opportunities across Sri Lanka with Propertia Ceylon.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & VARIABLES ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --forest: #123D32;
+            --deep-green: #092A24;
+            --secondary-green: #245744;
+            --accent-green: #A8C96A;
+            --ivory: #F7F6F0;
+            --white: #FFFFFF;
+            --dark-text: #19231F;
+            --muted-text: #68716A;
+            --light-border: #E4E7DF;
+            --font-heading: 'DM Serif Display', 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --radius-sm: 4px;
+            --radius-md: 10px;
+            --radius-lg: 20px;
+            --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --shadow-soft: 0 12px 40px rgba(9, 42, 36, 0.08);
+            --shadow-card: 0 8px 30px rgba(9, 42, 36, 0.1);
+            --header-height: 76px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--header-height);
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--ivory);
+            color: var(--dark-text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+            background: none;
+            color: inherit;
+        }
+
+        input, select, textarea {
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* ===== SCROLL REVEAL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal { opacity: 1; transform: none; transition: none; }
+            * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--accent-green);
+            outline-offset: 3px;
+        }
+
+        /* ===== CONCEPT NOTICE ===== */
+        .concept-notice {
+            position: fixed;
+            bottom: 18px;
+            left: 18px;
+            z-index: 900;
+            background: rgba(9, 42, 36, 0.92);
+            border: 1px solid rgba(168, 201, 106, 0.25);
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            font-size: 0.7rem;
+            color: rgba(247, 246, 240, 0.7);
+            letter-spacing: 0.4px;
+            backdrop-filter: blur(10px);
+            pointer-events: none;
+        }
+
+        .concept-notice strong {
+            color: var(--accent-green);
+            font-weight: 500;
+        }
+
+        /* ===== HEADER ===== */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            transition: background-color var(--transition), border-color var(--transition), box-shadow var(--transition);
+            border-bottom: 1px solid transparent;
+        }
+
+        .site-header.scrolled {
+            background-color: rgba(247, 246, 240, 0.97);
+            border-bottom-color: var(--light-border);
+            box-shadow: 0 2px 20px rgba(9, 42, 36, 0.06);
+            backdrop-filter: blur(14px);
+        }
+
+        .site-header.scrolled .logo-main,
+        .site-header.scrolled .logo-sub {
+            color: var(--forest);
+        }
+
+        .site-header.scrolled .nav-desktop a {
+            color: var(--muted-text);
+        }
+
+        .site-header.scrolled .nav-desktop a:hover,
+        .site-header.scrolled .nav-desktop a.active {
+            color: var(--forest);
+        }
+
+        .site-header.scrolled .mobile-toggle span {
+            background: var(--forest);
+        }
+
+        .site-header.scrolled .header-search-icon {
+            color: var(--forest);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+            flex-shrink: 0;
+        }
+
+        .logo-main {
+            font-family: var(--font-heading);
+            font-size: 1.45rem;
+            letter-spacing: 1px;
+            color: var(--ivory);
+            text-transform: uppercase;
+            transition: color var(--transition);
+        }
+
+        .logo-sub {
+            font-size: 0.5rem;
+            letter-spacing: 4.5px;
+            color: rgba(247, 246, 240, 0.6);
+            text-transform: uppercase;
+            margin-top: 2px;
+            transition: color var(--transition);
+        }
+
+        .nav-desktop {
+            display: flex;
+            align-items: center;
+            gap: 34px;
+            list-style: none;
+        }
+
+        .nav-desktop a {
+            font-size: 0.82rem;
+            font-weight: 400;
+            letter-spacing: 0.4px;
+            color: rgba(247, 246, 240, 0.75);
+            transition: color var(--transition);
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .nav-desktop a:hover,
+        .nav-desktop a.active {
+            color: var(--white);
+        }
+
+        .nav-desktop a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent-green);
+            transition: width var(--transition);
+        }
+
+        .nav-desktop a:hover::after,
+        .nav-desktop a.active::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .header-search-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            color: rgba(247, 246, 240, 0.75);
+            transition: color var(--transition);
+        }
+
+        .header-search-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+        }
+
+        .header-search-icon:hover {
+            color: var(--accent-green);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 28px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            letter-spacing: 0.4px;
+            border-radius: var(--radius-sm);
+            transition: all var(--transition);
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        .btn-accent {
+            background: var(--accent-green);
+            color: var(--deep-green);
+            border: 1px solid var(--accent-green);
+        }
+
+        .btn-accent:hover {
+            background: #b8d97a;
+            border-color: #b8d97a;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(168, 201, 106, 0.3);
+        }
+
+        .btn-forest {
+            background: var(--forest);
+            color: var(--ivory);
+            border: 1px solid var(--forest);
+        }
+
+        .btn-forest:hover {
+            background: var(--deep-green);
+            border-color: var(--deep-green);
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--forest);
+            border: 1px solid var(--forest);
+        }
+
+        .btn-outline:hover {
+            background: var(--forest);
+            color: var(--ivory);
+        }
+
+        .btn-outline-light {
+            background: transparent;
+            color: var(--ivory);
+            border: 1px solid rgba(247, 246, 240, 0.35);
+        }
+
+        .btn-outline-light:hover {
+            background: rgba(247, 246, 240, 0.1);
+            border-color: var(--ivory);
+        }
+
+        .btn-sm {
+            padding: 8px 20px;
+            font-size: 0.78rem;
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .mobile-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--ivory);
+            transition: all var(--transition);
+        }
+
+        .mobile-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .nav-mobile {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--deep-green);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            z-index: 999;
+            padding: 80px 28px 40px;
+        }
+
+        .nav-mobile.open {
+            display: flex;
+        }
+
+        .nav-mobile a {
+            font-size: 1.3rem;
+            font-family: var(--font-heading);
+            color: rgba(247, 246, 240, 0.65);
+            padding: 14px 0;
+            transition: color var(--transition);
+        }
+
+        .nav-mobile a:hover {
+            color: var(--accent-green);
+        }
+
+        .nav-mobile .btn {
+            margin-top: 28px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--deep-green);
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 40%;
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to right,
+                rgba(9, 42, 36, 0.92) 0%,
+                rgba(9, 42, 36, 0.78) 45%,
+                rgba(9, 42, 36, 0.45) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: calc(var(--header-height) + 60px) 28px 80px;
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            color: var(--accent-green);
+            text-transform: uppercase;
+            margin-bottom: 28px;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.8rem, 5.5vw, 4.6rem);
+            font-weight: 400;
+            line-height: 1.05;
+            letter-spacing: -0.5px;
+            color: var(--ivory);
+            margin-bottom: 24px;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--accent-green);
+        }
+
+        .hero-desc {
+            font-size: 1.05rem;
+            color: rgba(247, 246, 240, 0.65);
+            max-width: 480px;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        /* Hero Search Panel */
+        .hero-search-panel {
+            background: rgba(247, 246, 240, 0.06);
+            border: 1px solid rgba(247, 246, 240, 0.12);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            backdrop-filter: blur(18px);
+            align-self: end;
+            margin-bottom: 20px;
+        }
+
+        .hero-search-panel h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--ivory);
+            margin-bottom: 4px;
+            font-weight: 400;
+        }
+
+        .hero-search-panel .sub {
+            font-size: 0.78rem;
+            color: rgba(247, 246, 240, 0.5);
+            margin-bottom: 20px;
+        }
+
+        .search-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .search-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .search-field label {
+            font-size: 0.65rem;
+            color: rgba(247, 246, 240, 0.55);
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+        }
+
+        .search-field select,
+        .search-field input {
+            width: 100%;
+            padding: 12px 14px;
+            background: rgba(9, 42, 36, 0.6);
+            border: 1px solid rgba(247, 246, 240, 0.12);
+            border-radius: var(--radius-sm);
+            color: var(--ivory);
+            font-size: 0.85rem;
+            appearance: none;
+            -webkit-appearance: none;
+            transition: border-color var(--transition);
+        }
+
+        .search-field select:focus,
+        .search-field input:focus {
+            border-color: var(--accent-green);
+            outline: none;
+        }
+
+        .search-field select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23A8C96A' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 32px;
+        }
+
+        .search-field select option {
+            background: var(--deep-green);
+            color: var(--ivory);
+        }
+
+        .search-submit {
+            grid-column: 1 / -1;
+            padding: 14px;
+            background: var(--accent-green);
+            color: var(--deep-green);
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            transition: all var(--transition);
+            margin-top: 4px;
+        }
+
+        .search-submit:hover {
+            background: #b8d97a;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(168, 201, 106, 0.3);
+        }
+
+        /* ===== SECTION STYLES ===== */
+        .section {
+            padding: 110px 0;
+        }
+
+        .section-ivory {
+            background: var(--ivory);
+        }
+
+        .section-white {
+            background: var(--white);
+        }
+
+        .section-forest {
+            background: var(--forest);
+            color: var(--ivory);
+        }
+
+        .section-deep {
+            background: var(--deep-green);
+            color: var(--ivory);
+        }
+
+        .section-label {
+            font-size: 0.68rem;
+            letter-spacing: 3.5px;
+            text-transform: uppercase;
+            color: var(--accent-green);
+            margin-bottom: 14px;
+            font-weight: 500;
+        }
+
+        .section-forest .section-label,
+        .section-deep .section-label {
+            color: var(--accent-green);
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.9rem, 3.6vw, 3rem);
+            font-weight: 400;
+            line-height: 1.15;
+            letter-spacing: -0.3px;
+            margin-bottom: 16px;
+            color: var(--forest);
+        }
+
+        .section-forest .section-title,
+        .section-deep .section-title {
+            color: var(--ivory);
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--muted-text);
+            max-width: 560px;
+            line-height: 1.7;
+        }
+
+        .section-forest .section-subtitle,
+        .section-deep .section-subtitle {
+            color: rgba(247, 246, 240, 0.6);
+        }
+
+        .section-header {
+            margin-bottom: 56px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .section-header .header-text {
+            max-width: 640px;
+        }
+
+        /* ===== LAND DISCOVERY ===== */
+        .land-editorial {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .land-featured {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 16/10;
+            background: var(--secondary-green);
+            cursor: pointer;
+            group: featured;
+        }
+
+        .land-featured img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .land-featured:hover img {
+            transform: scale(1.04);
+        }
+
+        .land-featured::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(9, 42, 36, 0.92) 0%, rgba(9, 42, 36, 0.3) 45%, transparent 70%);
+        }
+
+        .land-featured-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 32px;
+            z-index: 2;
+            color: var(--ivory);
+        }
+
+        .land-featured-content .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--accent-green);
+            color: var(--deep-green);
+            font-size: 0.62rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 100px;
+            margin-bottom: 14px;
+        }
+
+        .land-featured-content h3 {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 6px;
+            line-height: 1.2;
+        }
+
+        .land-featured-content .meta {
+            font-size: 0.82rem;
+            color: rgba(247, 246, 240, 0.65);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .land-featured-content .meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .land-featured-content .meta svg {
+            width: 13px;
+            height: 13px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.5;
+        }
+
+        .land-featured-content .price {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            color: var(--accent-green);
+            margin-top: 10px;
+        }
+
+        .land-side {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .land-side-card {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            flex: 1;
+            min-height: 200px;
+            background: var(--secondary-green);
+            cursor: pointer;
+        }
+
+        .land-side-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .land-side-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .land-side-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(9, 42, 36, 0.9) 0%, transparent 65%);
+        }
+
+        .land-side-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            z-index: 2;
+            color: var(--ivory);
+        }
+
+        .land-side-content h4 {
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            font-weight: 400;
+            margin-bottom: 4px;
+        }
+
+        .land-side-content .meta {
+            font-size: 0.72rem;
+            color: rgba(247, 246, 240, 0.6);
+        }
+
+        .land-side-content .price {
+            font-size: 0.9rem;
+            color: var(--accent-green);
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        .land-cta-row {
+            display: flex;
+            justify-content: center;
+            margin-top: 16px;
+        }
+
+        /* ===== PROPERTY COLLECTION ===== */
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 24px;
+            align-items: center;
+        }
+
+        .filter-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .filter-tab {
+            padding: 10px 22px;
+            font-size: 0.8rem;
+            letter-spacing: 0.3px;
+            border: 1px solid var(--light-border);
+            border-radius: 100px;
+            color: var(--muted-text);
+            background: transparent;
+            transition: all var(--transition);
+            white-space: nowrap;
+        }
+
+        .filter-tab:hover {
+            border-color: var(--forest);
+            color: var(--forest);
+        }
+
+        .filter-tab.active {
+            background: var(--forest);
+            border-color: var(--forest);
+            color: var(--ivory);
+            font-weight: 500;
+        }
+
+        .filter-advanced {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            align-items: end;
+            padding: 22px;
+            background: var(--white);
+            border: 1px solid var(--light-border);
+            border-radius: var(--radius-md);
+            margin-bottom: 28px;
+        }
+
+        .filter-advanced .search-field label {
+            color: var(--muted-text);
+        }
+
+        .filter-advanced .search-field select,
+        .filter-advanced .search-field input {
+            background: var(--ivory);
+            border: 1px solid var(--light-border);
+            color: var(--dark-text);
+            padding: 9px 12px;
+            font-size: 0.8rem;
+        }
+
+        .filter-advanced .search-field select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2368716A' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 32px;
+        }
+
+        .filter-advanced .search-field select:focus,
+        .filter-advanced .search-field input:focus {
+            border-color: var(--accent-green);
+        }
+
+        .filter-advanced .search-field select option {
+            background: var(--white);
+            color: var(--dark-text);
+        }
+
+        .result-count {
+            font-size: 0.85rem;
+            color: var(--muted-text);
+            margin-bottom: 28px;
+        }
+
+        .result-count strong {
+            color: var(--forest);
+            font-weight: 600;
+        }
+
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 28px;
+        }
+
+        .property-card {
+            background: var(--white);
+            border: 1px solid var(--light-border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .property-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-card);
+            border-color: rgba(168, 201, 106, 0.4);
+        }
+
+        .card-image {
+            position: relative;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            background: var(--light-border);
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .property-card:hover .card-image img {
+            transform: scale(1.06);
+        }
+
+        .card-badges {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            padding: 5px 12px;
+            font-size: 0.62rem;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            font-weight: 600;
+            border-radius: 100px;
+        }
+
+        .badge-category {
+            background: var(--white);
+            color: var(--forest);
+            border: 1px solid var(--light-border);
+        }
+
+        .badge-status {
+            background: var(--accent-green);
+            color: var(--deep-green);
+        }
+
+        .badge-status.rent {
+            background: var(--secondary-green);
+            color: var(--ivory);
+        }
+
+        .badge-demo {
+            background: rgba(9, 42, 36, 0.85);
+            color: var(--ivory);
+            backdrop-filter: blur(6px);
+        }
+
+        .card-fav {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid var(--light-border);
+            border-radius: 50%;
+            transition: all var(--transition);
+            color: var(--muted-text);
+        }
+
+        .card-fav:hover,
+        .card-fav.saved {
+            color: #c0392b;
+            border-color: #e74c3c;
+            background: var(--white);
+        }
+
+        .card-fav svg {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            transition: fill var(--transition);
+        }
+
+        .card-fav.saved svg {
+            fill: #c0392b;
+        }
+
+        .card-body {
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .card-price {
+            font-family: var(--font-heading);
+            font-size: 1.35rem;
+            color: var(--forest);
+            margin-bottom: 6px;
+            line-height: 1.2;
+        }
+
+        .card-price span {
+            font-family: var(--font-body);
+            font-size: 0.72rem;
+            color: var(--muted-text);
+            font-weight: 400;
+        }
+
+        .card-title {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 400;
+            margin-bottom: 5px;
+            line-height: 1.3;
+            color: var(--dark-text);
+        }
+
+        .card-location {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            color: var(--muted-text);
+            margin-bottom: 16px;
+        }
+
+        .card-location svg {
+            width: 13px;
+            height: 13px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.5;
+            flex-shrink: 0;
+        }
+
+        .card-specs {
+            display: flex;
+            gap: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--light-border);
+            margin-top: auto;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .card-spec {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.78rem;
+            color: var(--muted-text);
+        }
+
+        .card-spec svg {
+            width: 14px;
+            height: 14px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.5;
+        }
+
+        .card-action {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid var(--forest);
+            border-radius: var(--radius-sm);
+            color: var(--forest);
+            font-size: 0.8rem;
+            letter-spacing: 0.4px;
+            transition: all var(--transition);
+            background: transparent;
+            font-weight: 500;
+        }
+
+        .card-action:hover {
+            background: var(--forest);
+            border-color: var(--forest);
+            color: var(--ivory);
+        }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 80px 28px;
+            grid-column: 1 / -1;
+        }
+
+        .empty-state svg {
+            width: 64px;
+            height: 64px;
+            stroke: var(--muted-text);
+            fill: none;
+            stroke-width: 1;
+            margin-bottom: 20px;
+            opacity: 0.4;
+        }
+
+        .empty-state h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            color: var(--forest);
+        }
+
+        .empty-state p {
+            color: var(--muted-text);
+            margin-bottom: 24px;
+            font-size: 0.9rem;
+        }
+
+        /* ===== LOCATION EXPLORER ===== */
+        .location-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .location-card {
+            position: relative;
+            aspect-ratio: 3/4;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid var(--light-border);
+            transition: border-color var(--transition), transform var(--transition);
+        }
+
+        .location-card:hover {
+            border-color: var(--accent-green);
+            transform: translateY(-4px);
+        }
+
+        .location-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .location-card:hover img {
+            transform: scale(1.06);
+        }
+
+        .location-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(9, 42, 36, 0.92) 0%, rgba(9, 42, 36, 0.2) 60%, transparent 100%);
+        }
+
+        .location-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 24px 20px;
+            z-index: 2;
+            color: var(--ivory);
+        }
+
+        .location-content h3 {
+            font-family: var(--font-heading);
+            font-size: 1.35rem;
+            font-weight: 400;
+            margin-bottom: 4px;
+        }
+
+        .location-content p {
+            font-size: 0.78rem;
+            color: rgba(247, 246, 240, 0.6);
+            margin-bottom: 12px;
+        }
+
+        .location-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.72rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--accent-green);
+            font-weight: 500;
+            transition: gap var(--transition);
+        }
+
+        .location-card:hover .location-link {
+            gap: 10px;
+        }
+
+        .location-link svg {
+            width: 14px;
+            height: 14px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        /* ===== INVESTMENT / EDUCATION ===== */
+        .editorial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .editorial-card {
+            background: var(--white);
+            border: 1px solid var(--light-border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+
+        .editorial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .editorial-image {
+            aspect-ratio: 16/10;
+            overflow: hidden;
+            background: var(--light-border);
+        }
+
+        .editorial-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .editorial-card:hover .editorial-image img {
+            transform: scale(1.05);
+        }
+
+        .editorial-body {
+            padding: 26px;
+        }
+
+        .editorial-body .tag {
+            font-size: 0.62rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-green);
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .editorial-body h3 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 10px;
+            line-height: 1.3;
+            color: var(--forest);
+        }
+
+        .editorial-body p {
+            font-size: 0.85rem;
+            color: var(--muted-text);
+            line-height: 1.7;
+        }
+
+        /* ===== SELL WITH US ===== */
+        .sell-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .sell-image {
+            position: relative;
+            aspect-ratio: 4/5;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: var(--secondary-green);
+        }
+
+        .sell-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sell-content h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            font-weight: 400;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            color: var(--forest);
+        }
+
+        .sell-content p {
+            font-size: 0.95rem;
+            color: var(--muted-text);
+            line-height: 1.8;
+            margin-bottom: 28px;
+        }
+
+        /* ===== WHY PROPERTIA ===== */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .why-card {
+            padding: 40px 32px;
+            background: rgba(247, 246, 240, 0.05);
+            border: 1px solid rgba(247, 246, 240, 0.1);
+            border-radius: var(--radius-md);
+            transition: border-color var(--transition), transform var(--transition);
+        }
+
+        .why-card:hover {
+            border-color: rgba(168, 201, 106, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .why-number {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            color: var(--accent-green);
+            margin-bottom: 20px;
+            line-height: 1;
+            opacity: 0.7;
+        }
+
+        .why-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 10px;
+            color: var(--ivory);
+        }
+
+        .why-card p {
+            font-size: 0.88rem;
+            color: rgba(247, 246, 240, 0.55);
+            line-height: 1.7;
+        }
+
+        /* ===== ABOUT ===== */
+        .about-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            aspect-ratio: 4/5;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: var(--light-border);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid rgba(168, 201, 106, 0.15);
+            border-radius: var(--radius-md);
+            pointer-events: none;
+        }
+
+        .about-content h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            font-weight: 400;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            color: var(--forest);
+        }
+
+        .about-content p {
+            font-size: 0.95rem;
+            color: var(--muted-text);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .about-content .btn {
+            margin-top: 12px;
+        }
+
+        /* ===== FINAL ENQUIRY ===== */
+        .enquiry-section {
+            position: relative;
+            background: var(--deep-green);
+            overflow: hidden;
+        }
+
+        .enquiry-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        .enquiry-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.25;
+        }
+
+        .enquiry-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .enquiry-split {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .enquiry-info h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.9rem, 3.2vw, 2.8rem);
+            font-weight: 400;
+            line-height: 1.12;
+            margin-bottom: 16px;
+            color: var(--ivory);
+        }
+
+        .enquiry-info p {
+            font-size: 0.95rem;
+            color: rgba(247, 246, 240, 0.6);
+            line-height: 1.8;
+            margin-bottom: 28px;
+        }
+
+        .enquiry-note {
+            padding: 16px 20px;
+            background: rgba(168, 201, 106, 0.08);
+            border-left: 2px solid var(--accent-green);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-size: 0.8rem;
+            color: rgba(247, 246, 240, 0.55);
+            line-height: 1.6;
+        }
+
+        .enquiry-note strong {
+            color: var(--accent-green);
+            font-weight: 500;
+        }
+
+        .enquiry-form {
+            display: grid;
+            gap: 16px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 0.72rem;
+            letter-spacing: 0.5px;
+            color: rgba(247, 246, 240, 0.55);
+            text-transform: uppercase;
+        }
+
+        .form-group label .required {
+            color: var(--accent-green);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 13px 16px;
+            background: rgba(247, 246, 240, 0.06);
+            border: 1px solid rgba(247, 246, 240, 0.12);
+            border-radius: var(--radius-sm);
+            color: var(--ivory);
+            font-size: 0.9rem;
+            transition: border-color var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent-green);
+            outline: none;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group select {
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23A8C96A' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 36px;
+        }
+
+        .form-group select option {
+            background: var(--deep-green);
+            color: var(--ivory);
+        }
+
+        .form-group .error-msg {
+            font-size: 0.7rem;
+            color: #ff6b6b;
+            display: none;
+        }
+
+        .form-group.has-error input,
+        .form-group.has-error select,
+        .form-group.has-error textarea {
+            border-color: #ff6b6b;
+        }
+
+        .form-group.has-error .error-msg {
+            display: block;
+        }
+
+        .form-success {
+            display: none;
+            padding: 24px;
+            background: rgba(168, 201, 106, 0.1);
+            border: 1px solid rgba(168, 201, 106, 0.3);
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+
+        .form-success.show {
+            display: block;
+        }
+
+        .form-success svg {
+            width: 40px;
+            height: 40px;
+            stroke: var(--accent-green);
+            fill: none;
+            stroke-width: 2;
+            margin-bottom: 12px;
+        }
+
+        .form-success h4 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--ivory);
+        }
+
+        .form-success p {
+            font-size: 0.85rem;
+            color: rgba(247, 246, 240, 0.6);
+        }
+
+        /* ===== FOOTER ===== */
+        .site-footer {
+            background: var(--deep-green);
+            border-top: 1px solid rgba(247, 246, 240, 0.08);
+            padding: 72px 0 36px;
+            color: var(--ivory);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 56px;
+        }
+
+        .footer-brand .logo-main {
+            font-size: 1.3rem;
+            color: var(--ivory);
+        }
+
+        .footer-brand .logo-sub {
+            font-size: 0.48rem;
+            color: rgba(247, 246, 240, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            font-size: 0.85rem;
+            color: rgba(247, 246, 240, 0.45);
+            line-height: 1.7;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            font-size: 0.7rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--accent-green);
+            margin-bottom: 18px;
+            font-weight: 500;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-col a {
+            font-size: 0.85rem;
+            color: rgba(247, 246, 240, 0.55);
+            transition: color var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: var(--accent-green);
+        }
+
+        .footer-col .config-note {
+            font-size: 0.72rem;
+            color: rgba(247, 246, 240, 0.3);
+            font-style: italic;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 28px;
+            border-top: 1px solid rgba(247, 246, 240, 0.08);
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .footer-bottom p {
+            font-size: 0.75rem;
+            color: rgba(247, 246, 240, 0.4);
+        }
+
+        .footer-bottom .disclaimer {
+            font-size: 0.7rem;
+            color: rgba(247, 246, 240, 0.3);
+        }
+
+        /* ===== PROPERTY MODAL ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(9, 42, 36, 0.88);
+            z-index: 2000;
+            backdrop-filter: blur(10px);
+            overflow-y: auto;
+            padding: 40px 20px;
+        }
+
+        .modal-overlay.open {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--ivory);
+            border-radius: var(--radius-lg);
+            max-width: 1000px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 40px 100px rgba(9, 42, 36, 0.4);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            z-index: 10;
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(9, 42, 36, 0.7);
+            border: 1px solid rgba(247, 246, 240, 0.15);
+            border-radius: 50%;
+            color: var(--ivory);
+            backdrop-filter: blur(10px);
+            transition: all var(--transition);
+        }
+
+        .modal-close:hover {
+            background: var(--accent-green);
+            color: var(--deep-green);
+            border-color: var(--accent-green);
+        }
+
+        .modal-close svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .modal-gallery {
+            position: relative;
+            aspect-ratio: 16/9;
+            background: var(--deep-green);
+            overflow: hidden;
+        }
+
+        .modal-gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 46px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(9, 42, 36, 0.7);
+            border: 1px solid rgba(247, 246, 240, 0.15);
+            border-radius: 50%;
+            color: var(--ivory);
+            backdrop-filter: blur(10px);
+            transition: all var(--transition);
+            z-index: 5;
+        }
+
+        .gallery-nav:hover {
+            background: var(--accent-green);
+            color: var(--deep-green);
+            border-color: var(--accent-green);
+        }
+
+        .gallery-nav svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .gallery-nav.prev { left: 16px; }
+        .gallery-nav.next { right: 16px; }
+
+        .gallery-thumbs {
+            display: flex;
+            gap: 8px;
+            padding: 14px 24px;
+            overflow-x: auto;
+            background: var(--white);
+            border-bottom: 1px solid var(--light-border);
+        }
+
+        .gallery-thumbs button {
+            flex-shrink: 0;
+            width: 84px;
+            aspect-ratio: 4/3;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            border: 2px solid transparent;
+            opacity: 0.5;
+            transition: all var(--transition);
+            padding: 0;
+        }
+
+        .gallery-thumbs button.active {
+            border-color: var(--accent-green);
+            opacity: 1;
+        }
+
+        .gallery-thumbs button:hover {
+            opacity: 1;
+        }
+
+        .gallery-thumbs img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-body {
+            padding: 36px;
+        }
+
+        .modal-header {
+            margin-bottom: 28px;
+        }
+
+        .modal-badges {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+
+        .modal-header h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 400;
+            line-height: 1.15;
+            margin-bottom: 6px;
+            color: var(--forest);
+        }
+
+        .modal-location {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            color: var(--muted-text);
+        }
+
+        .modal-price {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--forest);
+            margin: 20px 0;
+        }
+
+        .modal-price span {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            color: var(--muted-text);
+            font-weight: 400;
+        }
+
+        .modal-specs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 18px;
+            padding: 24px 0;
+            border-top: 1px solid var(--light-border);
+            border-bottom: 1px solid var(--light-border);
+            margin-bottom: 28px;
+        }
+
+        .modal-spec {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .modal-spec .label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--muted-text);
+        }
+
+        .modal-spec .value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--forest);
+        }
+
+        .modal-desc {
+            font-size: 0.92rem;
+            color: var(--muted-text);
+            line-height: 1.8;
+            margin-bottom: 28px;
+        }
+
+        .modal-features {
+            margin-bottom: 32px;
+        }
+
+        .modal-features h4 {
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-green);
+            margin-bottom: 14px;
+            font-weight: 600;
+        }
+
+        .modal-features ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .modal-features li {
+            padding: 7px 16px;
+            background: var(--white);
+            border: 1px solid var(--light-border);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            color: var(--muted-text);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .modal-actions .btn {
+            flex: 1;
+            min-width: 160px;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: #fff;
+            border: 1px solid #25D366;
+        }
+
+        .whatsapp-btn:hover {
+            background: #1ebe5d;
+            border-color: #1ebe5d;
+        }
+
+        .whatsapp-btn.unconfigured {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: var(--light-border);
+            color: var(--muted-text);
+            border-color: var(--light-border);
+        }
+
+        .enquiry-form-wrap {
+            display: none;
+            margin-top: 28px;
+            padding-top: 28px;
+            border-top: 1px solid var(--light-border);
+        }
+
+        .enquiry-form-wrap.open {
+            display: block;
+        }
+
+        .enquiry-form-wrap h4 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            margin-bottom: 18px;
+            color: var(--forest);
+        }
+
+        .enquiry-form-wrap .form-group label {
+            color: var(--muted-text);
+        }
+
+        .enquiry-form-wrap .form-group input,
+        .enquiry-form-wrap .form-group select,
+        .enquiry-form-wrap .form-group textarea {
+            background: var(--white);
+            border: 1px solid var(--light-border);
+            color: var(--dark-text);
+        }
+
+        .enquiry-form-wrap .form-group input:focus,
+        .enquiry-form-wrap .form-group select:focus,
+        .enquiry-form-wrap .form-group textarea:focus {
+            border-color: var(--accent-green);
+        }
+
+        .enquiry-form-wrap .form-group select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2368716A' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 36px;
+        }
+
+        .enquiry-form-wrap .form-group select option {
+            background: var(--white);
+            color: var(--dark-text);
+        }
+
+        /* ===== SCROLL TOP ===== */
+        .scroll-top {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 46px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--forest);
+            border: 1px solid var(--forest);
+            border-radius: 50%;
+            color: var(--ivory);
+            z-index: 800;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition);
+            transform: translateY(10px);
+            box-shadow: 0 6px 20px rgba(9, 42, 36, 0.25);
+        }
+
+        .scroll-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .scroll-top:hover {
+            background: var(--accent-green);
+            color: var(--deep-green);
+            border-color: var(--accent-green);
+        }
+
+        .scroll-top svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1100px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .hero-search-panel {
+                max-width: 520px;
+                align-self: start;
+            }
+            .land-editorial {
+                grid-template-columns: 1fr;
+            }
+            .land-side {
+                flex-direction: row;
+            }
+            .location-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .editorial-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .sell-split {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .sell-image {
+                aspect-ratio: 16/9;
+                max-height: 400px;
+            }
+            .about-split {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .about-image {
+                aspect-ratio: 16/9;
+                max-height: 400px;
+            }
+            .enquiry-split {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 36px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --header-height: 64px;
+            }
+            .nav-desktop {
+                display: none;
+            }
+            .header-actions .btn {
+                display: none;
+            }
+            .header-search-icon {
+                display: none;
+            }
+            .mobile-toggle {
+                display: flex;
+            }
+            .hero {
+                min-height: auto;
+            }
+            .hero-content {
+                padding: calc(var(--header-height) + 40px) 20px 60px;
+            }
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            .hero-ctas {
+                flex-direction: column;
+            }
+            .hero-ctas .btn {
+                width: 100%;
+            }
+            .hero-search-panel {
+                padding: 22px;
+            }
+            .search-grid {
+                grid-template-columns: 1fr;
+            }
+            .land-side {
+                flex-direction: column;
+            }
+            .land-featured {
+                aspect-ratio: 4/3;
+            }
+            .property-grid {
+                grid-template-columns: 1fr;
+            }
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+            .editorial-grid {
+                grid-template-columns: 1fr;
+            }
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .modal-body {
+                padding: 24px 20px;
+            }
+            .modal-gallery {
+                aspect-ratio: 4/3;
+            }
+            .modal-actions {
+                flex-direction: column;
+            }
+            .modal-actions .btn {
+                min-width: 100%;
+            }
+            .filter-advanced {
+                padding: 16px;
+            }
+            .filter-advanced .search-field {
+                min-width: 100%;
+            }
+            .section {
+                padding: 72px 0;
+            }
+            .container {
+                padding: 0 20px;
+            }
+            .concept-notice {
+                font-size: 0.6rem;
+                padding: 6px 12px;
+                bottom: 12px;
+                left: 12px;
+            }
+            .scroll-top {
+                bottom: 16px;
+                right: 16px;
+                width: 40px;
+                height: 40px;
+            }
+            .section-header {
+                margin-bottom: 36px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero-eyebrow {
+                font-size: 0.62rem;
+                letter-spacing: 2.5px;
+            }
+            .section-title {
+                font-size: 1.65rem;
+            }
+            .card-specs {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .modal-specs {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .land-featured-content {
+                padding: 24px 20px;
+            }
+            .land-featured-content h3 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== CONCEPT NOTICE ===== -->
+    <div class="concept-notice">
+        <strong>Website Concept Preview</strong> — Demonstration only. Sample listings are illustrative.
+    </div>
+
+    <!-- ===== HEADER ===== -->
+    <header class="site-header" id="siteHeader">
+        <div class="header-inner">
+            <a href="#home" class="logo" aria-label="Propertia Ceylon Home">
+                <span class="logo-main">Propertia</span>
+                <span class="logo-sub">Ceylon</span>
+            </a>
+            <nav aria-label="Main navigation">
+                <ul class="nav-desktop">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#properties">Buy Property</a></li>
+                    <li><a href="#land">Land</a></li>
+                    <li><a href="#sell">Sell With Us</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#properties" class="header-search-icon" aria-label="Search properties">
+                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                </a>
+                <a href="#enquire" class="btn btn-accent btn-sm">Enquire Now</a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== MOBILE NAV ===== -->
+    <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+        <a href="#home">Home</a>
+        <a href="#properties">Buy Property</a>
+        <a href="#land">Land</a>
+        <a href="#sell">Sell With Us</a>
+        <a href="#about">About</a>
+        <a href="#enquire" class="btn btn-accent">Enquire Now</a>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920&q=85" alt="Aerial view of lush green land in Sri Lanka">
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <p class="hero-eyebrow">Real Estate · Sri Lanka</p>
+                <h1>Your Next<br>Opportunity<br>Starts <em>Here.</em></h1>
+                <p class="hero-desc">Discover land, explore properties, and find a place for your next chapter across Sri Lanka.</p>
+                <div class="hero-ctas">
+                    <a href="#properties" class="btn btn-accent">Explore Properties</a>
+                    <a href="#sell" class="btn btn-outline-light">List Your Property</a>
+                </div>
+            </div>
+            <div class="hero-search-panel">
+                <h3>Find Your Property</h3>
+                <p class="sub">Search land, houses, apartments and more</p>
+                <div class="search-grid">
+                    <div class="search-field">
+                        <label for="heroPurpose">Purpose</label>
+                        <select id="heroPurpose">
+                            <option value="">Buy or Rent</option>
+                            <option value="sale">Buy</option>
+                            <option value="rent">Rent</option>
+                        </select>
+                    </div>
+                    <div class="search-field">
+                        <label for="heroType">Property Type</label>
+                        <select id="heroType">
+                            <option value="">All Types</option>
+                            <option value="Land">Land</option>
+                            <option value="House">House</option>
+                            <option value="Apartment">Apartment</option>
+                            <option value="Villa">Villa</option>
+                        </select>
+                    </div>
+                    <div class="search-field">
+                        <label for="heroLocation">Location</label>
+                        <select id="heroLocation">
+                            <option value="">All Locations</option>
+                            <option value="Colombo">Colombo</option>
+                            <option value="Galle">Galle</option>
+                            <option value="Ahangama">Ahangama</option>
+                            <option value="Hikkaduwa">Hikkaduwa</option>
+                            <option value="Kandy">Kandy</option>
+                            <option value="Negombo">Negombo</option>
+                        </select>
+                    </div>
+                    <div class="search-field">
+                        <label for="heroBudget">Budget (LKR)</label>
+                        <select id="heroBudget">
+                            <option value="">Any Budget</option>
+                            <option value="10000000">Up to 10M</option>
+                            <option value="25000000">Up to 25M</option>
+                            <option value="50000000">Up to 50M</option>
+                            <option value="100000000">Up to 100M</option>
+                        </select>
+                    </div>
+                    <button class="search-submit" id="heroSearchBtn">Search Properties</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== LAND DISCOVERY ===== -->
+    <section class="section section-ivory" id="land">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="header-text">
+                    <p class="section-label">Land Discovery</p>
+                    <h2 class="section-title">Land Is More Than a Plot.<br>It's a Possibility.</h2>
+                    <p class="section-subtitle">Explore land opportunities for your next home, development, or investment.</p>
+                </div>
+            </div>
+
+            <div class="land-editorial reveal">
+                <div class="land-featured" onclick="openPropertyModal('land-1')">
+                    <img src="https://images.unsplash.com/photo-1625602812206-5ec545ca1231?w=1200&q=85" alt="Aerial view of green land plot in Galle" loading="lazy">
+                    <div class="land-featured-content">
+                        <span class="tag">Featured Land</span>
+                        <h3>Panoramic Hillside Land</h3>
+                        <div class="meta">
+                            <span><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Galle District</span>
+                            <span><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg> 42 perches</span>
+                            <span><svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/></svg> Hill Country View</span>
+                        </div>
+                        <p class="price">LKR 28.5M <span style="font-family:var(--font-body);font-size:0.75rem;color:rgba(247,246,240,0.5);">· Sample listing</span></p>
+                    </div>
+                </div>
+                <div class="land-side">
+                    <div class="land-side-card" onclick="openPropertyModal('land-2')">
+                        <img src="https://images.unsplash.com/photo-1592595896551-12b371d546d5?w=600&q=80" alt="Flat residential land in Negombo" loading="lazy">
+                        <div class="land-side-content">
+                            <h4>Flat Residential Plot</h4>
+                            <p class="meta">Negombo · 20 perches</p>
+                            <p class="price">LKR 14M</p>
+                        </div>
+                    </div>
+                    <div class="land-side-card" onclick="openPropertyModal('land-3')">
+                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80" alt="Beachside land in Ahangama" loading="lazy">
+                        <div class="land-side-content">
+                            <h4>Beachside Land</h4>
+                            <p class="meta">Ahangama · 32 perches</p>
+                            <p class="price">LKR 38M</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="land-cta-row reveal">
+                <button class="btn btn-forest" onclick="filterByCategory('Land')">Explore All Land</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROPERTY COLLECTION ===== -->
+    <section class="section section-white" id="properties">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="header-text">
+                    <p class="section-label">Property Collection</p>
+                    <h2 class="section-title">Explore Properties Across Sri Lanka</h2>
+                    <p class="section-subtitle">Discover opportunities suited to different plans, places, and priorities.</p>
+                </div>
+            </div>
+
+            <!-- Category Tabs -->
+            <div class="filter-bar reveal">
+                <div class="filter-tabs" id="categoryTabs">
+                    <button class="filter-tab active" data-category="all">All Properties</button>
+                    <button class="filter-tab" data-category="Land">Land</button>
+                    <button class="filter-tab" data-category="House">Houses</button>
+                    <button class="filter-tab" data-category="Apartment">Apartments</button>
+                    <button class="filter-tab" data-category="Villa">Villas</button>
+                </div>
+            </div>
+
+            <!-- Advanced Filters -->
+            <div class="filter-advanced reveal" id="advancedFilters">
+                <div class="search-field">
+                    <label for="filterPurpose">Buy / Rent</label>
+                    <select id="filterPurpose">
+                        <option value="">All</option>
+                        <option value="sale">Buy</option>
+                        <option value="rent">Rent</option>
+                    </select>
+                </div>
+                <div class="search-field">
+                    <label for="filterLocation">Location</label>
+                    <select id="filterLocation">
+                        <option value="">All Locations</option>
+                        <option value="Colombo">Colombo</option>
+                        <option value="Galle">Galle</option>
+                        <option value="Ahangama">Ahangama</option>
+                        <option value="Hikkaduwa">Hikkaduwa</option>
+                        <option value="Kandy">Kandy</option>
+                        <option value="Negombo">Negombo</option>
+                    </select>
+                </div>
+                <div class="search-field">
+                    <label for="filterMinPrice">Min Price (LKR)</label>
+                    <input type="number" id="filterMinPrice" placeholder="0" min="0" step="1000000">
+                </div>
+                <div class="search-field">
+                    <label for="filterMaxPrice">Max Price (LKR)</label>
+                    <input type="number" id="filterMaxPrice" placeholder="Any" min="0" step="1000000">
+                </div>
+                <div class="search-field">
+                    <label for="filterBedrooms">Bedrooms</label>
+                    <select id="filterBedrooms">
+                        <option value="">Any</option>
+                        <option value="1">1+</option>
+                        <option value="2">2+</option>
+                        <option value="3">3+</option>
+                        <option value="4">4+</option>
+                    </select>
+                </div>
+                <div class="search-field">
+                    <label for="filterSort">Sort By</label>
+                    <select id="filterSort">
+                        <option value="newest">Newest</option>
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                    </select>
+                </div>
+                <button class="btn btn-outline btn-sm" id="clearFiltersBtn" style="height:38px;margin-bottom:1px;">Clear Filters</button>
+            </div>
+
+            <p class="result-count reveal" id="resultCount">Showing <strong>8</strong> demonstration properties</p>
+
+            <div class="property-grid" id="propertyGrid">
+                <!-- Cards injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== LOCATION EXPLORER ===== -->
+    <section class="section section-ivory">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="header-text">
+                    <p class="section-label">Location Explorer</p>
+                    <h2 class="section-title">Discover Opportunities by Location</h2>
+                    <p class="section-subtitle">Explore properties across Sri Lanka's most desirable areas.</p>
+                </div>
+            </div>
+            <div class="location-grid reveal">
+                <div class="location-card" onclick="filterByLocation('Colombo')">
+                    <img src="https://images.unsplash.com/photo-1588258524673-3c38bcdc0b3b?w=600&q=80" alt="Colombo cityscape" loading="lazy">
+                    <div class="location-content">
+                        <h3>Colombo</h3>
+                        <p>Urban apartments & commercial land</p>
+                        <span class="location-link">Explore Properties <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </div>
+                </div>
+                <div class="location-card" onclick="filterByLocation('Galle')">
+                    <img src="https://images.unsplash.com/photo-1586611292717-f828b167408c?w=600&q=80" alt="Galle coastal landscape" loading="lazy">
+                    <div class="location-content">
+                        <h3>Galle</h3>
+                        <p>Coastal land & villas</p>
+                        <span class="location-link">Explore Properties <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </div>
+                </div>
+                <div class="location-card" onclick="filterByLocation('Ahangama')">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" alt="Ahangama beach" loading="lazy">
+                    <div class="location-content">
+                        <h3>Ahangama</h3>
+                        <p>Beachside land & investment</p>
+                        <span class="location-link">Explore Properties <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </div>
+                </div>
+                <div class="location-card" onclick="filterByLocation('Kandy')">
+                    <img src="https://images.unsplash.com/photo-1580889299318-3c3f18f22e3a?w=600&q=80" alt="Kandy hills" loading="lazy">
+                    <div class="location-content">
+                        <h3>Kandy</h3>
+                        <p>Hill country land & homes</p>
+                        <span class="location-link">Explore Properties <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== INVESTMENT / EDUCATION ===== -->
+    <section class="section section-white">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="header-text">
+                    <p class="section-label">Property Insights</p>
+                    <h2 class="section-title">Make Your Next Property Decision With Clarity.</h2>
+                    <p class="section-subtitle">Understand the key considerations before exploring land and property opportunities.</p>
+                </div>
+            </div>
+            <div class="editorial-grid reveal">
+                <div class="editorial-card">
+                    <div class="editorial-image">
+                        <img src="https://images.unsplash.com/photo-1625602812206-5ec545ca1231?w=600&q=80" alt="Land survey and planning" loading="lazy">
+                    </div>
+                    <div class="editorial-body">
+                        <span class="tag">Guide</span>
+                        <h3>What to Consider Before Buying Land</h3>
+                        <p>From access roads to utilities, understanding the practical details of a plot helps you make a more informed decision.</p>
+                    </div>
+                </div>
+                <div class="editorial-card">
+                    <div class="editorial-image">
+                        <img src="https://images.unsplash.com/photo-1592595896551-12b371d546d5?w=600&q=80" alt="Land measurement" loading="lazy">
+                    </div>
+                    <div class="editorial-body">
+                        <span class="tag">Guide</span>
+                        <h3>Understanding Land Size and Price per Perch</h3>
+                        <p>Perches and acres can be confusing. Learn how land is measured and how to compare value across different plots.</p>
+                    </div>
+                </div>
+                <div class="editorial-card">
+                    <div class="editorial-image">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80" alt="Property planning" loading="lazy">
+                    </div>
+                    <div class="editorial-body">
+                        <span class="tag">Guide</span>
+                        <h3>Finding a Property That Fits Your Plans</h3>
+                        <p>Whether building a home or investing, matching a property to your long-term plans is the most important first step.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SELL WITH US ===== -->
+    <section class="section section-ivory" id="sell">
+        <div class="container">
+            <div class="sell-split reveal">
+                <div class="sell-image">
+                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&q=85" alt="Sri Lankan property landscape" loading="lazy">
+                </div>
+                <div class="sell-content">
+                    <p class="section-label">For Property Owners</p>
+                    <h2>Have Land or Property to Sell?</h2>
+                    <p>Introduce your property to people exploring opportunities in Sri Lanka. Connect with us to discuss how we can present your land or property to the right audience.</p>
+                    <a href="#enquire" class="btn btn-forest">Enquire About Listing Your Property</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WHY PROPERTIA ===== -->
+    <section class="section section-forest">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="header-text">
+                    <p class="section-label">Our Approach</p>
+                    <h2 class="section-title">A More Thoughtful Way to Explore Property.</h2>
+                </div>
+            </div>
+            <div class="why-grid reveal">
+                <div class="why-card">
+                    <div class="why-number">01</div>
+                    <h3>Explore Different Opportunities</h3>
+                    <p>Discover land and relevant residential property options in one experience.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-number">02</div>
+                    <h3>Compare With More Clarity</h3>
+                    <p>See useful property details, locations, and sizes in a consistent format.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-number">03</div>
+                    <h3>Take the Next Step</h3>
+                    <p>Find a clear route to enquire about a property that interests you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="section section-white" id="about">
+        <div class="container">
+            <div class="about-split reveal">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=85" alt="Sri Lankan land and property" loading="lazy">
+                </div>
+                <div class="about-content">
+                    <p class="section-label">About Propertia Ceylon</p>
+                    <h2>Connecting People With Property Opportunities.</h2>
+                    <p>Propertia Ceylon presents land and property opportunities across Sri Lanka, bringing together useful information and clear presentation to help you explore what's available.</p>
+                    <p>Our approach is focused on making property discovery more straightforward — whether you're looking for land to build on, a residential property, or an opportunity to explore.</p>
+                    <a href="#enquire" class="btn btn-outline">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FINAL ENQUIRY ===== -->
+    <section class="section enquiry-section" id="enquire">
+        <div class="enquiry-bg">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80" alt="Coastal Sri Lanka landscape" loading="lazy">
+        </div>
+        <div class="container">
+            <div class="enquiry-split reveal">
+                <div class="enquiry-info">
+                    <p class="section-label">Get in Touch</p>
+                    <h2>Let's Find the Right Opportunity for You.</h2>
+                    <p>Tell us what you're looking for, and take the next step with Propertia Ceylon.</p>
+                    <div class="enquiry-note">
+                        <strong>Demonstration notice:</strong> This form is part of a website concept preview. Submissions are not transmitted, stored, or sent to any business. No data leaves your browser.
+                    </div>
+                </div>
+                <div>
+                    <form class="enquiry-form" id="enquiryForm" novalidate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="enqName">Name <span class="required">*</span></label>
+                                <input type="text" id="enqName" placeholder="Your name" required>
+                                <span class="error-msg">Please enter your name.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="enqPhone">Phone <span class="required">*</span></label>
+                                <input type="tel" id="enqPhone" placeholder="+94 XX XXX XXXX" required>
+                                <span class="error-msg">Please enter your phone number.</span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="enqEmail">Email (optional)</label>
+                                <input type="email" id="enqEmail" placeholder="you@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="enqInterest">Property Interest</label>
+                                <select id="enqInterest">
+                                    <option value="">Select interest</option>
+                                    <option value="Land">Land</option>
+                                    <option value="House">House</option>
+                                    <option value="Apartment">Apartment</option>
+                                    <option value="Villa">Villa</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="enqLocation">Preferred Location</label>
+                            <input type="text" id="enqLocation" placeholder="e.g. Galle, Colombo">
+                        </div>
+                        <div class="form-group">
+                            <label for="enqMessage">Message</label>
+                            <textarea id="enqMessage" placeholder="Tell us what you're looking for..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-accent" style="width:100%;">Send Enquiry (Demo)</button>
+                    </form>
+                    <div class="form-success" id="enquirySuccess">
+                        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                        <h4>Thank You</h4>
+                        <p>This is a demonstration. No data was transmitted or stored.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo" style="margin-bottom:14px;">
+                        <span class="logo-main">Propertia</span>
+                        <span class="logo-sub">Ceylon</span>
+                    </div>
+                    <p>Presenting land and property opportunities across Sri Lanka with clarity and care.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigate</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#properties">Buy Property</a></li>
+                        <li><a href="#land">Land</a></li>
+                        <li><a href="#sell">Sell With Us</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="#properties" onclick="filterByCategory('Land')">Land</a></li>
+                        <li><a href="#properties" onclick="filterByCategory('House')">Houses</a></li>
+                        <li><a href="#properties" onclick="filterByCategory('Apartment')">Apartments</a></li>
+                        <li><a href="#properties" onclick="filterByCategory('Villa')">Villas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><span class="config-note">Contact details to be configured</span></li>
+                        <li><span class="config-note">Instagram — to be configured</span></li>
+                        <li><span class="config-note">WhatsApp — to be configured</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Propertia Ceylon. Website concept preview.</p>
+                <p class="disclaimer">Demonstration prototype. Property listings, prices, and details are illustrative only and do not represent verified market information.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== PROPERTY MODAL ===== -->
+    <div class="modal-overlay" id="propertyModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-content" id="modalContent">
+            <button class="modal-close" id="modalClose" aria-label="Close property details">
+                <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+            <div class="modal-gallery" id="modalGallery">
+                <button class="gallery-nav prev" id="galleryPrev" aria-label="Previous image">
+                    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <img id="modalMainImage" src="" alt="Property image">
+                <button class="gallery-nav next" id="galleryNext" aria-label="Next image">
+                    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+            </div>
+            <div class="gallery-thumbs" id="galleryThumbs"></div>
+            <div class="modal-body">
+                <div class="modal-header">
+                    <div class="modal-badges" id="modalBadges"></div>
+                    <h2 id="modalTitle"></h2>
+                    <p class="modal-location" id="modalLocation"></p>
+                </div>
+                <p class="modal-price" id="modalPrice"></p>
+                <div class="modal-specs" id="modalSpecs"></div>
+                <p class="modal-desc" id="modalDesc"></p>
+                <div class="modal-features" id="modalFeatures"></div>
+                <div class="modal-actions">
+                    <button class="btn btn-forest" id="modalEnquireBtn">Enquire About This Property</button>
+                    <button class="btn btn-outline" id="modalViewingBtn">Request a Viewing</button>
+                    <button class="btn whatsapp-btn" id="modalWhatsappBtn">Ask on WhatsApp</button>
+                </div>
+                <div class="enquiry-form-wrap" id="enquiryFormWrap">
+                    <h4>Property Enquiry</h4>
+                    <form id="modalEnquiryForm" novalidate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="modalEnqName">Name <span class="required">*</span></label>
+                                <input type="text" id="modalEnqName" placeholder="Your name" required>
+                                <span class="error-msg">Please enter your name.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="modalEnqPhone">Phone <span class="required">*</span></label>
+                                <input type="tel" id="modalEnqPhone" placeholder="+94 XX XXX XXXX" required>
+                                <span class="error-msg">Please enter your phone number.</span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="modalEnqEmail">Email (optional)</label>
+                                <input type="email" id="modalEnqEmail" placeholder="you@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="modalEnqContactPref">Preferred Contact</label>
+                                <select id="modalEnqContactPref">
+                                    <option value="phone">Phone</option>
+                                    <option value="email">Email</option>
+                                    <option value="whatsapp">WhatsApp</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="modalEnqMessage">Message</label>
+                            <textarea id="modalEnqMessage" placeholder="I'm interested in this property..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-forest" style="margin-top:14px;">Submit Enquiry (Demo)</button>
+                    </form>
+                    <div class="form-success" id="modalEnquirySuccess" style="margin-top:16px;">
+                        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                        <h4>Enquiry Noted (Demonstration)</h4>
+                        <p>No data was transmitted or stored. This is a prototype preview.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SCROLL TOP ===== -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+    </button>
+
+    <script>
+        /* ============================================================
+           CONFIGURABLE BUSINESS DETAILS
+           ============================================================ */
+        const BUSINESS_CONFIG = {
+            whatsappNumber: '',   // e.g. '94771234567' — leave empty to disable
+            instagramUrl: '',
+            email: '',
+            phone: '',
+            address: ''
+        };
+
+        /* ============================================================
+           DEMONSTRATION PROPERTY DATA
+           Sample listings only — not verified inventory.
+           ============================================================ */
+        const properties = [
+            {
+                id: 'land-1',
+                title: 'Panoramic Hillside Land',
+                category: 'Land',
+                purpose: 'sale',
+                location: 'Galle',
+                price: 28500000,
+                priceLabel: 'LKR 28.5M',
+                bedrooms: 0,
+                bathrooms: 0,
+                area: '42 perches',
+                areaLabel: 'Land Size',
+                desc: 'A generous hillside plot with panoramic views, suitable for a private residence or small development. Demonstration listing.',
+                features: ['Hill Country Views', 'Clear Access Road', 'Flat Upper Terrace', 'Water Available', 'Electricity Nearby', 'Residential Zone'],
+                images: [
+                    'https://images.unsplash.com/photo-1625602812206-5ec545ca1231?w=1200&q=85',
+                    'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200&q=85',
+                    'https://images.unsplash.com/photo-1592595896551-12b371d546d5?w=1200&q=85'
+                ],
+                dateAdded: '2026-02-01'
+            },
+            {
+                id: 'land-2',
+                title: 'Flat Residential Plot',
+                category: 'Land',
+                purpose: 'sale',
+                location: 'Negombo',
+                price: 14000000,
+                priceLabel: 'LKR 14M',
+                bedrooms: 0,
+                bathrooms: 0,
+                area: '20 perches',
+                areaLabel: 'Land Size',
+                desc: 'A flat, rectangular plot in a residential area with easy access. Suitable for building a family home. Demonstration listing.',
+                features: ['Flat Terrain', 'Road Access', 'Residential Zone', 'Water Nearby', 'Electricity Available'],
+                images: [
+                    'https://images.unsplash.com/photo-1592595896551-12b371d546d5?w=1200&q=85',
+                    'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200&q=85',
+                    'https://images.unsplash.com/photo-1625602812206-5ec545ca1231?w=1200&q=85'
+                ],
+                dateAdded: '2026-02-10'
+            },
+            {
+                id: 'land-3',
+                title: 'Beachside Land',
+                category: 'Land',
+                purpose: 'sale',
+                location: 'Ahangama',
+                price: 38000000,
+                priceLabel: 'LKR 38M',
+                bedrooms: 0,
+                bathrooms: 0,
+                area: '32 perches',
+                areaLabel: 'Land Size',
+                desc: 'A rare coastal land opportunity near the beach. Ideal for a private villa or boutique development. Demonstration listing.',
+                features: ['Coastal Proximity', 'Sea Breeze', 'Access Road', 'Tourism Zone (illustrative)', 'Water & Electricity'],
+                images: [
+                    'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=85',
+                    'https://images.unsplash.com/photo-1592595896551-12b371d546d5?w=1200&q=85',
+                    'https://images.unsplash.com/photo-1625602812206-5ec545ca1231?w=1200&q=85'
+                ],
+                dateAdded: '2026-01-25'
+            },
+            {
+                id: 'house-1',
+                title: 'Modern Tropical Villa',
+                category: 'House',
+                purpose: 'sale',
+                location: 'Hikkaduwa',
+                price: 52000000,
+                priceLabel: 'LKR 52M',
+                bedrooms: 4,
+                bathrooms: 3,
+                area: '3,400 sq ft',
+                areaLabel: 'Floor Area',
+                desc: 'A contemporary villa with tropical design elements, private garden, and pool area. Demonstration listing.',
+                features: ['Private Pool', 'Tropical Garden', 'Open Living', 'Master Suite', 'Parking', 'Modern Kitchen'],
+                images: [
+                    'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=85',
+                    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=85',
+                    'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=85'
+                ],
+                dateAdded: '2026-01-18'
+            },
+            {
+                id: 'house-2',
+                title: 'Family Home with Garden',
+                category: 'House',
+                purpose: 'sale',
+                location: 'Kandy',
+                price: 36000000,
+                priceLabel: 'LKR 36M',
+                bedrooms: 3,
+                bathrooms: 2,
+                area: '2,600 sq ft',
+                areaLabel: 'Floor Area',
+                desc: 'A comfortable family home in the hills with a spacious garden and scenic surroundings. Demonstration listing.',
+                features: ['Hill Views', 'Garden', 'Covered Parking', 'Living & Dining', 'Water Tank', 'Quiet Area'],
+                images: [
+                    'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=85',
+                    'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&q=85',
+                    'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1200&q=85'
+                ],
+                dateAdded: '2026-02-05'
+            },
+            {
+                id: 'apt-1',
+                title: 'City Apartment with Views',
+                category: 'Apartment',
+                purpose: 'sale',
+                location: 'Colombo',
+                price: 29500000,
+                priceLabel: 'LKR 29.5M',
+                bedrooms: 2,
+                bathrooms: 2,
+                area: '1,200 sq ft',
+                areaLabel: 'Floor Area',
+                desc: 'A modern apartment in a central location with city views and access to shared amenities. Demonstration listing.',
+                features: ['City Views', 'Swimming Pool', 'Gym', '24h Security', 'Parking', 'Lift'],
+                images: [
+                    'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&q=85',
+                    'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200&q=85',
+                    'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1200&q=85'
+                ],
+                dateAdded: '2026-01-30'
+            },
+            {
+                id: 'villa-1',
+                title: 'Beachfront Villa',
+                category: 'Villa',
+                purpose: 'sale',
+                location: 'Ahangama',
+                price: 85000000,
+                priceLabel: 'LKR 85M',
+                bedrooms: 5,
+                bathrooms: 4,
+                area: '4,800 sq ft',
+                areaLabel: 'Floor Area',
+                desc: 'A luxurious beachfront villa offering direct access to the sand and expansive ocean views. Demonstration listing.',
+                features: ['Beachfront', 'Infinity Pool', 'Ocean Views', 'Private Garden', 'Staff Quarters', 'Parking'],
+                images: [
+                    'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=85',
+                    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=85',
+                    'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=85'
+                ],
+                dateAdded: '2026-02-12'
+            },
+            {
+                id: 'rent-1',
+                title: 'Garden House for Rent',
+                category: 'House',
+                purpose: 'rent',
+                location: 'Negombo',
+                price: 150000,
+                priceLabel: 'LKR 150,000 / month',
+                bedrooms: 3,
+                bathrooms: 2,
+                area: '2,000 sq ft',
+                areaLabel: 'Floor Area',
+                desc: 'A pleasant family home with a garden, available on a demonstration rental basis. Close to schools and amenities.',
+                features: ['Garden', 'Parking', 'Partly Furnished', 'Water Tank', 'Fenced', 'Quiet Street'],
+                images: [
+                    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=85',
+                    'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1200&q=85',
+                    'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1200&q=85'
+                ],
+                dateAdded: '2026-02-08'
+            }
+        ];
+
+        /* ============================================================
+           STATE
+           ============================================================ */
+        let currentFilters = {
+            category: 'all',
+            purpose: '',
+            location: '',
+            minPrice: null,
+            maxPrice: null,
+            bedrooms: null,
+            sort: 'newest'
+        };
+
+        let savedFavourites = [];
+        let currentModalProperty = null;
+        let currentGalleryIndex = 0;
+
+        /* ============================================================
+           UTILITIES
+           ============================================================ */
+        function formatPrice(price) {
+            if (price >= 1000000) {
+                return 'LKR ' + (price / 1000000).toFixed(1).replace('.0', '') + 'M';
+            }
+            return 'LKR ' + price.toLocaleString();
+        }
+
+        function loadFavourites() {
+            try {
+                const stored = localStorage.getItem('propertia_favourites');
+                if (stored) savedFavourites = JSON.parse(stored);
+            } catch (e) {
+                savedFavourites = [];
+            }
+        }
+
+        function saveFavourites() {
+            try {
+                localStorage.setItem('propertia_favourites', JSON.stringify(savedFavourites));
+            } catch (e) { /* silently continue */ }
+        }
+
+        function toggleFavourite(propertyId, btnElement) {
+            const index = savedFavourites.indexOf(propertyId);
+            if (index > -1) {
+                savedFavourites.splice(index, 1);
+                btnElement.classList.remove('saved');
+                btnElement.setAttribute('aria-label', 'Save to favourites');
+            } else {
+                savedFavourites.push(propertyId);
+                btnElement.classList.add('saved');
+                btnElement.setAttribute('aria-label', 'Remove from favourites');
+            }
+            saveFavourites();
+        }
+
+        /* ============================================================
+           FILTERING & RENDERING
+           ============================================================ */
+        function getFilteredProperties() {
+            let filtered = [...properties];
+
+            if (currentFilters.category !== 'all') {
+                filtered = filtered.filter(p => p.category === currentFilters.category);
+            }
+            if (currentFilters.purpose) {
+                filtered = filtered.filter(p => p.purpose === currentFilters.purpose);
+            }
+            if (currentFilters.location) {
+                filtered = filtered.filter(p => p.location === currentFilters.location);
+            }
+            if (currentFilters.minPrice !== null && currentFilters.minPrice > 0) {
+                filtered = filtered.filter(p => p.price >= currentFilters.minPrice);
+            }
+            if (currentFilters.maxPrice !== null && currentFilters.maxPrice > 0) {
+                filtered = filtered.filter(p => p.price <= currentFilters.maxPrice);
+            }
+            if (currentFilters.bedrooms !== null) {
+                filtered = filtered.filter(p => p.bedrooms >= currentFilters.bedrooms);
+            }
+
+            switch (currentFilters.sort) {
+                case 'price-asc':
+                    filtered.sort((a, b) => a.price - b.price);
+                    break;
+                case 'price-desc':
+                    filtered.sort((a, b) => b.price - a.price);
+                    break;
+                case 'newest':
+                default:
+                    filtered.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+                    break;
+            }
+            return filtered;
+        }
+
+        function renderProperties() {
+            const grid = document.getElementById('propertyGrid');
+            const filtered = getFilteredProperties();
+            const countEl = document.getElementById('resultCount');
+
+            countEl.innerHTML = 'Showing <strong>' + filtered.length + '</strong> demonstration propert' + (filtered.length !== 1 ? 'ies' : 'y');
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-state">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M8 11h6"/></svg>
+                        <h3>No Properties Found</h3>
+                        <p>Try adjusting your filters or clearing them to see all demonstration listings.</p>
+                        <button class="btn btn-forest" onclick="clearAllFilters()">Clear Filters</button>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(prop => {
+                const isSaved = savedFavourites.includes(prop.id);
+                const specs = [];
+
+                if (prop.bedrooms > 0) {
+                    specs.push(`<span class="card-spec"><svg viewBox="0 0 24 24"><path d="M3 7v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7"/><path d="M3 7l9-4 9 4"/><path d="M9 21V12h6v9"/></svg>${prop.bedrooms} bed</span>`);
+                }
+                if (prop.bathrooms > 0) {
+                    specs.push(`<span class="card-spec"><svg viewBox="0 0 24 24"><path d="M4 12h16a1 1 0 0 1 1 1v3a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-3a1 1 0 0 1 1-1z"/><path d="M6 12V5a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1"/></svg>${prop.bathrooms} bath</span>`);
+                }
+                specs.push(`<span class="card-spec"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>${prop.area}</span>`);
+
+                const statusLabel = prop.purpose === 'rent' ? 'For Rent' : 'For Sale';
+                const statusClass = prop.purpose === 'rent' ? 'badge-status rent' : 'badge-status';
+
+                return `
+                    <article class="property-card reveal" data-id="${prop.id}" onclick="openPropertyModal('${prop.id}')">
+                        <div class="card-image">
+                            <img src="${prop.images[0]}" alt="${prop.title} in ${prop.location}" loading="lazy"
+                                 onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg, #245744, #092A24)';">
+                            <div class="card-badges">
+                                <span class="badge badge-category">${prop.category}</span>
+                                <span class="badge ${statusClass}">${statusLabel}</span>
+                                <span class="badge badge-demo">Sample</span>
+                            </div>
+                            <button class="card-fav ${isSaved ? 'saved' : ''}" data-id="${prop.id}" aria-label="${isSaved ? 'Remove from favourites' : 'Save to favourites'}" onclick="event.stopPropagation();toggleFavourite('${prop.id}', this)">
+                                <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-price">${prop.priceLabel}${prop.purpose === 'rent' ? '' : ''}</p>
+                            <h3 class="card-title">${prop.title}</h3>
+                            <p class="card-location">
+                                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                ${prop.location}, Sri Lanka
+                            </p>
+                            <div class="card-specs">${specs.join('')}</div>
+                            <button class="card-action" onclick="event.stopPropagation();openPropertyModal('${prop.id}')">View Property</button>
+                        </div>
+                    </article>
+                `;
+            }).join('');
+
+            observeReveals();
+        }
+
+        /* ============================================================
+           FILTER CONTROLS
+           ============================================================ */
+        function applyFilters() {
+            currentFilters.purpose = document.getElementById('filterPurpose').value;
+            currentFilters.location = document.getElementById('filterLocation').value;
+            currentFilters.sort = document.getElementById('filterSort').value;
+
+            const minVal = document.getElementById('filterMinPrice').value;
+            const maxVal = document.getElementById('filterMaxPrice').value;
+            currentFilters.minPrice = minVal ? parseInt(minVal) : null;
+            currentFilters.maxPrice = maxVal ? parseInt(maxVal) : null;
+
+            const bedVal = document.getElementById('filterBedrooms').value;
+            currentFilters.bedrooms = bedVal ? parseInt(bedVal) : null;
+
+            renderProperties();
+        }
+
+        function clearAllFilters() {
+            currentFilters = {
+                category: 'all', purpose: '', location: '',
+                minPrice: null, maxPrice: null, bedrooms: null, sort: 'newest'
+            };
+
+            document.getElementById('filterPurpose').value = '';
+            document.getElementById('filterLocation').value = '';
+            document.getElementById('filterMinPrice').value = '';
+            document.getElementById('filterMaxPrice').value = '';
+            document.getElementById('filterBedrooms').value = '';
+            document.getElementById('filterSort').value = 'newest';
+
+            document.querySelectorAll('#categoryTabs .filter-tab').forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.dataset.category === 'all') tab.classList.add('active');
+            });
+
+            document.getElementById('heroLocation').value = '';
+            document.getElementById('heroType').value = '';
+            document.getElementById('heroPurpose').value = '';
+            document.getElementById('heroBudget').value = '';
+
+            renderProperties();
+        }
+
+        function filterByCategory(category) {
+            currentFilters = {
+                category: category, purpose: '', location: '',
+                minPrice: null, maxPrice: null, bedrooms: null, sort: 'newest'
+            };
+
+            document.getElementById('filterPurpose').value = '';
+            document.getElementById('filterLocation').value = '';
+            document.getElementById('filterMinPrice').value = '';
+            document.getElementById('filterMaxPrice').value = '';
+            document.getElementById('filterBedrooms').value = '';
+            document.getElementById('filterSort').value = 'newest';
+
+            document.querySelectorAll('#categoryTabs .filter-tab').forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.dataset.category === category) tab.classList.add('active');
+            });
+
+            renderProperties();
+            document.getElementById('properties').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function filterByLocation(location) {
+            currentFilters = {
+                category: 'all', purpose: '', location: location,
+                minPrice: null, maxPrice: null, bedrooms: null, sort: 'newest'
+            };
+
+            document.getElementById('filterPurpose').value = '';
+            document.getElementById('filterLocation').value = location;
+            document.getElementById('filterMinPrice').value = '';
+            document.getElementById('filterMaxPrice').value = '';
+            document.getElementById('filterBedrooms').value = '';
+            document.getElementById('filterSort').value = 'newest';
+
+            document.querySelectorAll('#categoryTabs .filter-tab').forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.dataset.category === 'all') tab.classList.add('active');
+            });
+
+            renderProperties();
+            document.getElementById('properties').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        /* ============================================================
+           HERO SEARCH
+           ============================================================ */
+        function heroSearch() {
+            const purpose = document.getElementById('heroPurpose').value;
+            const type = document.getElementById('heroType').value;
+            const location = document.getElementById('heroLocation').value;
+            const budget = document.getElementById('heroBudget').value;
+
+            currentFilters.purpose = purpose;
+            currentFilters.category = type || 'all';
+            currentFilters.location = location;
+            currentFilters.maxPrice = budget ? parseInt(budget) : null;
+            currentFilters.minPrice = null;
+            currentFilters.bedrooms = null;
+            currentFilters.sort = 'newest';
+
+            document.getElementById('filterPurpose').value = purpose;
+            document.getElementById('filterLocation').value = location;
+            document.getElementById('filterMaxPrice').value = budget || '';
+            document.getElementById('filterMinPrice').value = '';
+            document.getElementById('filterBedrooms').value = '';
+            document.getElementById('filterSort').value = 'newest';
+
+            document.querySelectorAll('#categoryTabs .filter-tab').forEach(tab => {
+                tab.classList.remove('active');
+                if ((type && tab.dataset.category === type) || (!type && tab.dataset.category === 'all')) {
+                    tab.classList.add('active');
+                }
+            });
+
+            renderProperties();
+            document.getElementById('properties').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        /* ============================================================
+           PROPERTY MODAL
+           ============================================================ */
+        function openPropertyModal(propertyId) {
+            const prop = properties.find(p => p.id === propertyId);
+            if (!prop) return;
+
+            currentModalProperty = prop;
+            currentGalleryIndex = 0;
+
+            document.getElementById('modalTitle').textContent = prop.title;
+            document.getElementById('modalLocation').innerHTML = `
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" style="flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                ${prop.location}, Sri Lanka
+            `;
+            document.getElementById('modalPrice').innerHTML = prop.priceLabel + (prop.purpose === 'rent' ? ' <span>/ month</span>' : ' <span>asking (demonstration)</span>');
+            document.getElementById('modalDesc').textContent = prop.desc;
+
+            const statusLabel = prop.purpose === 'rent' ? 'For Rent' : 'For Sale';
+            const statusClass = prop.purpose === 'rent' ? 'badge-status rent' : 'badge-status';
+            document.getElementById('modalBadges').innerHTML = `
+                <span class="badge badge-category">${prop.category}</span>
+                <span class="badge ${statusClass}">${statusLabel}</span>
+                <span class="badge badge-demo">Demonstration</span>
+            `;
+
+            let specsHtml = '';
+            if (prop.bedrooms > 0) {
+                specsHtml += `<div class="modal-spec"><span class="label">Bedrooms</span><span class="value">${prop.bedrooms}</span></div>`;
+            }
+            if (prop.bathrooms > 0) {
+                specsHtml += `<div class="modal-spec"><span class="label">Bathrooms</span><span class="value">${prop.bathrooms}</span></div>`;
+            }
+            specsHtml += `<div class="modal-spec"><span class="label">${prop.areaLabel}</span><span class="value">${prop.area}</span></div>`;
+            specsHtml += `<div class="modal-spec"><span class="label">Category</span><span class="value">${prop.category}</span></div>`;
+            document.getElementById('modalSpecs').innerHTML = specsHtml;
+
+            document.getElementById('modalFeatures').innerHTML = `
+                <h4>Key Features</h4>
+                <ul>${prop.features.map(f => `<li>${f}</li>`).join('')}</ul>
+            `;
+
+            updateGallery();
+            updateWhatsAppButton();
+
+            document.getElementById('enquiryFormWrap').classList.remove('open');
+            document.getElementById('modalEnquirySuccess').classList.remove('show');
+            document.getElementById('modalEnquiryForm').style.display = 'block';
+            document.getElementById('modalEnquiryForm').reset();
+
+            document.getElementById('propertyModal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+
+            setTimeout(() => document.getElementById('modalClose').focus(), 100);
+        }
+
+        function updateGallery() {
+            const prop = currentModalProperty;
+            if (!prop) return;
+
+            const mainImg = document.getElementById('modalMainImage');
+            mainImg.src = prop.images[currentGalleryIndex];
+            mainImg.alt = prop.title + ' — image ' + (currentGalleryIndex + 1);
+
+            document.getElementById('galleryThumbs').innerHTML = prop.images.map((img, i) => `
+                <button class="${i === currentGalleryIndex ? 'active' : ''}" onclick="setGalleryImage(${i})" aria-label="View image ${i + 1}">
+                    <img src="${img}" alt="Thumbnail ${i + 1}" loading="lazy">
+                </button>
+            `).join('');
+        }
+
+        function setGalleryImage(index) {
+            if (!currentModalProperty) return;
+            if (index < 0) index = currentModalProperty.images.length - 1;
+            if (index >= currentModalProperty.images.length) index = 0;
+            currentGalleryIndex = index;
+            updateGallery();
+        }
+
+        function closePropertyModal() {
+            document.getElementById('propertyModal').classList.remove('open');
+            document.body.style.overflow = '';
+            currentModalProperty = null;
+        }
+
+        function updateWhatsAppButton() {
+            const btn = document.getElementById('modalWhatsappBtn');
+            if (!BUSINESS_CONFIG.whatsappNumber) {
+                btn.classList.add('unconfigured');
+                btn.title = 'WhatsApp number not configured in this prototype';
+                btn.textContent = 'Ask on WhatsApp';
+            } else {
+                btn.classList.remove('unconfigured');
+                btn.title = 'Open WhatsApp with a property-specific message';
+                btn.textContent = 'Ask on WhatsApp';
+            }
+        }
+
+        function handleWhatsApp() {
+            if (!currentModalProperty) return;
+
+            if (!BUSINESS_CONFIG.whatsappNumber) {
+                alert('WhatsApp contact is not configured in this prototype.\n\nIn a live website, this button would open WhatsApp with a pre-filled message about "' + currentModalProperty.title + '".');
+                return;
+            }
+
+            const message = encodeURIComponent(
+                'Hello Propertia Ceylon, I am interested in "' + currentModalProperty.title + '" in ' + currentModalProperty.location + ' (' + currentModalProperty.priceLabel + '). Could you please share more details?'
+            );
+            window.open('https://wa.me/' + BUSINESS_CONFIG.whatsappNumber + '?text=' + message, '_blank');
+        }
+
+        /* ============================================================
+           FORM VALIDATION
+           ============================================================ */
+        function validateField(input) {
+            const group = input.closest('.form-group');
+            if (!input.value.trim()) {
+                group.classList.add('has-error');
+                return false;
+            }
+            group.classList.remove('has-error');
+            return true;
+        }
+
+        function handleEnquiryForm(e) {
+            e.preventDefault();
+            const name = document.getElementById('enqName');
+            const phone = document.getElementById('enqPhone');
+            const nameValid = validateField(name);
+            const phoneValid = validateField(phone);
+
+            if (nameValid && phoneValid) {
+                document.getElementById('enquiryForm').style.display = 'none';
+                document.getElementById('enquirySuccess').classList.add('show');
+            }
+        }
+
+        function handleModalEnquiryForm(e) {
+            e.preventDefault();
+            const name = document.getElementById('modalEnqName');
+            const phone = document.getElementById('modalEnqPhone');
+            const nameValid = validateField(name);
+            const phoneValid = validateField(phone);
+
+            if (nameValid && phoneValid) {
+                document.getElementById('modalEnquiryForm').style.display = 'none';
+                document.getElementById('modalEnquirySuccess').classList.add('show');
+            }
+        }
+
+        /* ============================================================
+           SCROLL REVEAL
+           ============================================================ */
+        let revealObserver = null;
+
+        function observeReveals() {
+            if (revealObserver) revealObserver.disconnect();
+
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+                return;
+            }
+
+            revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+            document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+                revealObserver.observe(el);
+            });
+        }
+
+        /* ============================================================
+           HEADER & SCROLL
+           ============================================================ */
+        function handleScroll() {
+            const header = document.getElementById('siteHeader');
+            const scrollTop = document.getElementById('scrollTop');
+
+            if (window.scrollY > 60) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            if (window.scrollY > 600) {
+                scrollTop.classList.add('show');
+            } else {
+                scrollTop.classList.remove('show');
+            }
+        }
+
+        /* ============================================================
+           MOBILE MENU
+           ============================================================ */
+        function toggleMobileMenu() {
+            const toggle = document.getElementById('mobileToggle');
+            const nav = document.getElementById('navMobile');
+            const isOpen = nav.classList.toggle('open');
+            toggle.classList.toggle('active');
+            toggle.setAttribute('aria-expanded', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        }
+
+        function closeMobileMenu() {
+            const toggle = document.getElementById('mobileToggle');
+            const nav = document.getElementById('navMobile');
+            nav.classList.remove('open');
+            toggle.classList.remove('active');
+            toggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+
+        /* ============================================================
+           INITIALIZATION
+           ============================================================ */
+        document.addEventListener('DOMContentLoaded', function() {
+            loadFavourites();
+            renderProperties();
+            observeReveals();
+
+            window.addEventListener('scroll', handleScroll, { passive: true });
+            handleScroll();
+
+            document.getElementById('mobileToggle').addEventListener('click', toggleMobileMenu);
+
+            document.querySelectorAll('#navMobile a').forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+
+            document.getElementById('heroSearchBtn').addEventListener('click', heroSearch);
+
+            document.querySelectorAll('#categoryTabs .filter-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    document.querySelectorAll('#categoryTabs .filter-tab').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    currentFilters.category = this.dataset.category;
+                    renderProperties();
+                });
+            });
+
+            ['filterPurpose', 'filterLocation', 'filterSort', 'filterBedrooms'].forEach(id => {
+                document.getElementById(id).addEventListener('change', applyFilters);
+            });
+            ['filterMinPrice', 'filterMaxPrice'].forEach(id => {
+                document.getElementById(id).addEventListener('change', applyFilters);
+            });
+
+            document.getElementById('clearFiltersBtn').addEventListener('click', clearAllFilters);
+
+            document.getElementById('modalClose').addEventListener('click', closePropertyModal);
+            document.getElementById('propertyModal').addEventListener('click', function(e) {
+                if (e.target === this) closePropertyModal();
+            });
+
+            document.getElementById('galleryPrev').addEventListener('click', () => setGalleryImage(currentGalleryIndex - 1));
+            document.getElementById('galleryNext').addEventListener('click', () => setGalleryImage(currentGalleryIndex + 1));
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    if (document.getElementById('propertyModal').classList.contains('open')) {
+                        closePropertyModal();
+                    }
+                    if (document.getElementById('navMobile').classList.contains('open')) {
+                        closeMobileMenu();
+                    }
+                }
+                if (document.getElementById('propertyModal').classList.contains('open')) {
+                    if (e.key === 'ArrowLeft') setGalleryImage(currentGalleryIndex - 1);
+                    if (e.key === 'ArrowRight') setGalleryImage(currentGalleryIndex + 1);
+                }
+            });
+
+            document.getElementById('modalEnquireBtn').addEventListener('click', function() {
+                document.getElementById('enquiryFormWrap').classList.add('open');
+                document.getElementById('modalEnquirySuccess').classList.remove('show');
+                document.getElementById('modalEnquiryForm').style.display = 'block';
+                this.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            });
+
+            document.getElementById('modalViewingBtn').addEventListener('click', function() {
+                document.getElementById('enquiryFormWrap').classList.add('open');
+                document.getElementById('modalEnquirySuccess').classList.remove('show');
+                document.getElementById('modalEnquiryForm').style.display = 'block';
+                document.getElementById('modalEnqMessage').value = 'I would like to request a viewing for this property. Please let me know available times.';
+                this.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            });
+
+            document.getElementById('modalWhatsappBtn').addEventListener('click', handleWhatsApp);
+            document.getElementById('modalEnquiryForm').addEventListener('submit', handleModalEnquiryForm);
+            document.getElementById('enquiryForm').addEventListener('submit', handleEnquiryForm);
+
+            document.getElementById('scrollTop').addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Active nav highlighting
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-desktop a');
+
+            const navObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navLinks.forEach(link => {
+                            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+                        });
+                    }
+                });
+            }, { rootMargin: '-40% 0px -55% 0px' });
+
+            sections.forEach(section => navObserver.observe(section));
+
+            // Image error fallback
+            document.querySelectorAll('img').forEach(img => {
+                img.addEventListener('error', function() {
+                    this.style.display = 'none';
+                    const parent = this.parentElement;
+                    if (parent) {
+                        parent.style.background = 'linear-gradient(135deg, #245744, #092A24)';
+                        parent.style.minHeight = '200px';
+                    }
+                }, { once: true });
+            });
+
+            window.addEventListener('beforeunload', function() {
+                if (revealObserver) revealObserver.disconnect();
+            });
+        });
+    </script>
+</body>
+</html>
